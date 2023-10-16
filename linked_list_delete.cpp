@@ -20,10 +20,8 @@ void DeleteElementLL(node* &head, int pos){
         delete temp;
     }
     else{
-        node* p;
-        node* q;
-        p = head;
-        q = NULL;
+        node* p = head;
+        node* q = NULL;
         for(int i=0;i<pos;i++){
             q=p;
             p=p->next;
