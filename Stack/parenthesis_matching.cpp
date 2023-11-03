@@ -4,42 +4,38 @@ using namespace std;
 class node
 {
 public:
-    int data;
+    char data;
     node *next;
 };
 
 class Stack
 {
-private:
+public:
     node *top;
 
-public:
     Stack()
     {
         top = NULL;
     }
-    void push(int x);
-    int pop();
+    void push(char x);
+    char pop();
     void display();
 };
 
-void Stack::push(int x)
-{
-    node *t = new node;
-    if (t == nullptr)
-    {
+void Stack::push(char x){
+    node* t = new node();
+    if(t == nullptr){
         t->data = x;
-        top = t;
+        top=t;
     }
-    else
-    {
+    else{
         t->data = x;
-        t->next = top;
+        t->next = t;
         top = t;
     }
 }
 
-int Stack::pop()
+char Stack::pop()
 {
     int x = -1;
     if (top == NULL)
@@ -70,12 +66,33 @@ void Stack::display()
     }
 }
 
+int isBalanced(string &str)
+{
+    int n = str.length();
+    Stack st;
+    for(int i=0; i< n; i++)
+    {
+        if(str[i] == '(')
+        {
+            st.push(str[i]);
+            continue;
+        }
+        else if(str[i] == ')')
+        {
+            st.pop();
+        }
+    }
+    if(st.top == NULL){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
 int main()
 {
-    Stack stk;
-    stk.push(10);
-    stk.push(30);
-    stk.push(40);
-    stk.display();
+    string str = "(a+b)";
+    cout<<isBalanced(str);
     return 0;
 }
