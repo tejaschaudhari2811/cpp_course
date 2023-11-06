@@ -14,44 +14,49 @@ public:
     }
 };
 
-void CountNodes(node *head)
+// Traverse a linkedlist
+void Display(node *head)
 {
-    int count = 0;
-    while (head != NULL)
+    node *temp = head;
+    while (temp != NULL)
     {
-        count++;
-        head = head->next;
+        cout << temp->data << endl;
+        temp = temp->next;
     }
-    cout << count << endl;
 }
 
-void RDisplay(node *head)
+void insert(node* &head, int index, int data)
 {
-    ;
-    if (head == NULL)
+    node* new_node = new node(data);
+    node* p = head;
+    if(index == 0)
     {
-        return;
+        p->next = head;
+        head = p;
+        return
     }
     else
     {
-        cout << head->data << endl;
-        RDisplay(head->next);
+        for(int i=0;i<index;i++)
+        {
+            p = p->next;
+        }
+        p->next = new_node
     }
 }
+
 int main()
 {
-    node *head = NULL;
-    node *first = new node(1);
+    node *head;
+    node *one = new node(1);
     node *two = new node(2);
     node *three = new node(3);
 
-    head = first; // Point head to first.
-
-    // Conncet the nodes to each other.
-    first->next = two;
+    head = one;
+    one->next = two;
     two->next = three;
 
-    // display the linked list.
-    CountNodes(head);
+    Display(head);
+
     return 0;
 }
