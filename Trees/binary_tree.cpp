@@ -1,28 +1,32 @@
-// Binary Tree in C++
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-struct node
+class node
 {
+public:
     int data;
-    struct node *left;
-    struct node *right;
+    node *left;
+    node *right;
+
+    node(int value)
+    {
+        this->data = value;
+        this->left = NULL;
+        this->right = NULL;
+    }
 };
 
-// Create a new node
-struct node *newNode(int value)
-{
-    struct node *node = (struct node *)malloc(sizeof(struct node));
-
-    node->data = value;
-    node->left = NULL;
-    node->right = NULL;
-    return (node);
-}
 int main()
 {
-    struct node *root = newNode(1);
-    root->left = newNode(2);
-    root->right = newNode(3);
+    node *root = new node(1);
+
+    root->left = new node(2);
+    root->right = new node(3);
+    root->left->left = new node(4);
+    /*
+        1
+       / \
+      2   3
+    */
     return 0;
-}
+};
