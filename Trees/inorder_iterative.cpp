@@ -27,6 +27,7 @@ void iterativePreorder(node *root)
 
     // Create an empty stack and push root to it.
     stack<node*> nodeStack;
+    
 
 }
 
