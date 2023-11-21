@@ -1,10 +1,11 @@
-#include <iostream>
+#include<iostream>
 #include<limits.h>
 using namespace std;
 
+//Program to display linked list
 class node
 {
-public:
+    public:
     int data;
     node *next;
 
@@ -18,68 +19,63 @@ public:
 void Display(node *head)
 {
     node *temp = head;
-    while (temp != NULL)
+    while(temp!=NULL)
     {
-        cout << temp->data << endl;
-        temp = temp->next;
+        cout<<temp->data<<" ";
+        temp=temp->next;
     }
 }
 
-void RDisplay(node *head)
+void Rdisplay(node *head)
 {
     node *temp = head;
-    if (temp == NULL)
+    if(temp!=NULL)
     {
-        return;
-    }
-    else
-    {
-        cout << temp->data << endl;
-        RDisplay(temp->next);
+        cout<<temp->data<<endl;
+        Rdisplay(temp->next);
     }
 }
 
 int Count(node *head)
 {
-    int count = 0;
     node *temp = head;
-    while (temp != NULL)
+    int count=0;
+    while(temp!=NULL)
     {
         count++;
-        temp = temp->next;
+        temp=temp->next;
     }
     return count;
 }
 
 int Rcount(node *head)
 {
-    node *temp = head;
-    if (temp == NULL)
-    {
+    node* temp = head;
+    if(temp==NULL){
         return 0;
     }
-    else
-    {
-        return Rcount(temp->next) + 1;
+    else{
+        return Rcount(temp->next)+1;
     }
 }
 
-int SumLList(node* head)
+int Sum(node *head)
 {
-    node* temp = head;
-    int sum = 0;
+    node *temp = head;
+    int sum=0;
     while(temp!=NULL)
-    {   
-        sum = sum + temp->data;
+    {
+        sum += temp->data;
         temp = temp->next;
     }
     return sum;
 }
 
-int Rsum(node* head)
+int Rsum(node *head)
 {
-    node* temp = head;
-    if(temp==NULL){
+    node *temp = head;
+    if(temp == NULL)
+    {
         return 0;
     }
     else{
@@ -87,10 +83,10 @@ int Rsum(node* head)
     }
 }
 
-int MaxElement(node* head)
+int maxElement(node *head)
 {
     int max = INT_MIN;
-    node* temp = head;
+    node *temp = head;
     while(temp!=NULL)
     {
         if(temp->data > max)
@@ -102,62 +98,50 @@ int MaxElement(node* head)
     return max;
 }
 
-int MinElement(node* head)
+int minElement(node *head)
 {
     int min = INT_MAX;
-    node* temp = head;
+    node *temp = head;
     while(temp!=NULL)
     {
-        if(temp->data<min)
+        if(temp->data < min)
         {
             min = temp->data;
         }
         temp = temp->next;
     }
     return min;
-
 }
 
-//LinearSearch in a Linked list
-bool Search(node* head, int key)
+node* search(node* head, int key)
 {
-    node* temp = head;
-    while(temp!=NULL)
+    while(head!=NULL)
     {
-        if(temp->data==key)
+        if(key == head->data)
         {
-            return true;
+            return (head);
         }
-        temp = temp->next;
+        else{
+            head = head->next;
+        }
     }
-    return false;
+    return NULL;
 }
 
 int main()
 {
     node *head = NULL;
     node *first = new node(1);
-    node *two = new node(2);
-
-    node *three = new node(3);
-
-    node *four = new node(4);
-
-    node *five = new node(5);
-
+    node *second = new node(2);
+    node *third = new node(3);
+    node *fourth = new node(4);
+    
     head = first;
+    first->next = second;
+    second->next = third;
+    third->next = fourth;
 
-    first->next = two;
-    two->next = three;
-    three->next = four;
-    four->next = five;
-
-    // Display(head);
-    // RDisplay(head);
-    cout << SumLList(head) << endl;
-    cout << Rsum(head) << endl;
-    cout << MaxElement(head) << endl;
-    cout << MinElement(head) << endl;
-    cout<<Search(head,3)<<endl;
+    cout<<maxElement(head)<<endl;
+    cout<<search(head, 5)<<endl;
     return 0;
 }
