@@ -19,10 +19,12 @@ void Display(struct Array arr)
 
 void add(struct Array &arr, int element)
 {
-    if(arr.length == arr.size){
-        cout<<"The array is already full"<<endl;
+    if (arr.length == arr.size)
+    {
+        cout << "The array is already full" << endl;
     }
-    else{
+    else
+    {
         arr.A[arr.length] = element;
         arr.length++;
     }
@@ -49,6 +51,22 @@ void insert(struct Array &arr, int index, int element)
     }
 }
 
+void Delete(struct Array &arr, int index)
+{
+    if (index >= arr.length || arr.length == 0)
+    {
+        cout << "Invalid index or array is empty" << endl;
+    }
+    else
+    {
+        for (int i = index; i < arr.length - 1; i++)
+        {
+            arr.A[i] = arr.A[i + 1];
+        }
+        arr.length--;
+    }
+}
+
 int main()
 {
     struct Array arr;
@@ -65,8 +83,7 @@ int main()
     }
     arr.length = n;
 
-    
-    insert(arr,2,15);
+    insert(arr, 2, 15);
     Display(arr);
     return 0;
 }
