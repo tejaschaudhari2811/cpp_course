@@ -18,7 +18,7 @@ void Display(struct Array arr)
 
 int BinarySearch(struct Array arr, int low, int high, int key)
 {
-    
+
     while (low <= high)
     {
         int mid = (low + high) / 2;
@@ -40,25 +40,23 @@ int BinarySearch(struct Array arr, int low, int high, int key)
 
 int RBinarySearch(struct Array arr, int low, int high, int key)
 {
-    if(low<=high)
+    if (low <= high)
     {
-        int mid = (low+high)/2;
-        if(key == arr.A[mid])
+        int mid = (low + high) / 2;
+        if (key == arr.A[mid])
         {
             return mid;
         }
-        else if(key < arr.A[mid])
+        else if (key < arr.A[mid])
         {
             return RBinarySearch(arr, low, mid - 1, key);
         }
         else
         {
-            return RBinarySearch(arr, mid+1, high, key);
+            return RBinarySearch(arr, mid + 1, high, key);
         }
     }
     return -1;
-
-    
 }
 int main()
 {
@@ -67,7 +65,7 @@ int main()
     arr.length = 10;
     arr.A = new int[arr.size]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    cout<<RBinarySearch(arr, 0, 9, 3);
+    cout << RBinarySearch(arr, 0, 9, 3);
 
     return 0;
 }
