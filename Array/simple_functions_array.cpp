@@ -10,7 +10,9 @@ struct Array{
 int Get(struct Array arr, int index)
 {
     if(index>=0 && index<arr.length)
+    {
         return arr.A[index];
+    }
 }
 
 void Set(struct Array *arr, int index, int new_element)
