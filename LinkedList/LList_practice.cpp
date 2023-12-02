@@ -24,6 +24,18 @@ void Display(Node *head)
     }
 }
 
+int Count(Node *head)
+{
+    // Function to count nodes in a linkedlist.
+    Node *temp = head;
+    int count = 0;
+    while(temp!=NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
 int main()
 {
     Node *head = nullptr;
@@ -37,6 +49,7 @@ int main()
     second->next = third;
 
     Display(head);
+    cout<<"The number of nodes in the linkedlist are "<<Count(head)<<endl;
 
     return 0;
 }
