@@ -46,6 +46,24 @@ void Insert(node *t, int key)
     }
 }
 
+node *RInsert(node *p, int key)
+{
+    node *t;
+    if (p == nullptr)
+    {
+        t = new node(key);
+        return t;
+    }
+    if (key < p->data)
+    {
+        p->lchild = RInsert(p->lchild, key);
+    }
+    else
+    {
+        p->rchild = RInsert(p->rchild, key);
+    }
+}
+
 int main()
 {
     // Create a binary Search Tree
