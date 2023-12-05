@@ -64,6 +64,16 @@ node *RInsert(node *p, int key)
     }
 }
 
+void Inorder(node *t)
+{
+    if (t)
+    {
+        Inorder(t->lchild);
+        cout << t->data << " ";
+        Inorder(t->rchild);
+    }
+}
+
 int main()
 {
     // Create a binary Search Tree
@@ -76,6 +86,8 @@ int main()
     // Connect the nodes.
     root->lchild = l1_lchild;
     root->rchild = l1_rchild;
+
+    Inorder(head);
 
     return 0;
 }
