@@ -16,6 +16,36 @@ public:
     }
 };
 
+void Insert(node *t, int key)
+{
+    node *r = nullptr, *p;
+    while (t != nullptr)
+    {
+        r = t;
+        if (key == t->data)
+        {
+            return;
+        }
+        else if (key < t->data)
+        {
+            t = t->lchild;
+        }
+        else
+        {
+            t = t->rchild;
+        }
+    }
+    p = new node(key);
+    if (p->data < r->data)
+    {
+        r->lchild = p;
+    }
+    else
+    {
+        r->rchild = p;
+    }
+}
+
 int main()
 {
     // Create a binary Search Tree
