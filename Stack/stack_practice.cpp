@@ -1,58 +1,65 @@
+// First Revision of Stack Data Structure
 #include <iostream>
 using namespace std;
 
-class Stack
+const int MAX = 1000;
+
+class stack
 {
 private:
     int top;
 
 public:
-    int *A;
-    int size;
+    int a[MAX]; // Declare an array of max size 1000;
 
-    Stack(int size)
+    stack()
     {
-        this->top = -1;
-        this->size = size;
-        this->A = new int[this->size];
+        top = -1;
     }
-    void push(int item);
+
+    void push(int x);
     int pop();
+    int peek();
     bool isEmpty();
 };
 
-void Stack::push(int item)
+void stack::push(int x)
 {
-    if (top >= size)
+    if (top >= (MAX - 1))
     {
-        cout << "Stack overflow" << endl;
+        cout<<"Stack Overflow";
     }
-    else
-    {
-        A[++top] = item;
+    else{
+        a[top++] = x;
     }
 }
 
-int Stack::pop()
+int stack::pop()
 {
-    if (top < 0)
+    if(top == -1)
     {
-        cout << "Stack underflow" << endl;
+        cout<<"Stack underflow"<<endl;
         return -1;
     }
-    else
-    {
-        return A[top--];
+    else{
+        return a[top--];
     }
 }
 
-bool Stack::isEmpty()
+int stack::peek()
 {
-    return (top < 0);
+    if(top < 0)
+    {
+        cout<<"The stack is empty"<<endl;
+        return -1;
+    }
+    else{
+        return a[top];
+    }
 }
+
+
 int main()
 {
-    class Stack st(5);
-    st.isEmpty();
     return 0;
 }
