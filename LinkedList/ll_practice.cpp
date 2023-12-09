@@ -26,6 +26,18 @@ void Display(node *head)
     }
 }
 
+void InsertAtTail(node* head, int element)
+{
+    // Here assume that node is inserted at end
+    node * new_node = new node(element);
+    node *temp = head;
+    while(temp->next!=NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = new_node;
+}
+
 int main()
 {
     node *head = nullptr;
@@ -38,6 +50,7 @@ int main()
     two->next = three;    
 
     head = one;
+    InsertAtTail(head, 20);
     Display(head);
     return 0;
-}
+};
