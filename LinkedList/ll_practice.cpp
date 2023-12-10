@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 using namespace std;
 
 // Linkedlist Practice code file for 2nd iteration.
@@ -45,11 +46,11 @@ void InsertAtHead(node *&head, int element)
     head = new_node;
 }
 
-void InsertSorted(node* &head, int element)
+void InsertSorted(node *&head, int element)
 {
-    node* new_node = new node(element);
-    node* temp = head;
-    while(temp->next->data < new_node->data)
+    node *new_node = new node(element);
+    node *temp = head;
+    while (temp->next->data < new_node->data)
     {
         temp = temp->next;
     }
@@ -68,6 +69,23 @@ void Delete(node *head)
     temp->next = nullptr;
 }
 
+bool isSorted(node *head)
+{
+    node *temp = head;
+    int x = INT_MIN;
+    while(temp!=NULL)
+    {
+        if(temp->data < x)
+        {
+            return false;
+        }
+        x = temp->data;
+        temp = temp->next;
+    }
+    return true;
+}
+
+
 int main()
 {
     node *head = nullptr;
@@ -80,7 +98,7 @@ int main()
     two->next = three;
 
     head = one;
-    InsertSorted(head, 3);
+    cout<<isSorted(head)<<endl;
     Display(head);
     return 0;
 };
