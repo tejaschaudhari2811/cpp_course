@@ -85,6 +85,24 @@ bool isSorted(node *head)
     return true;
 }
 
+void removeDuplicates(node *head)
+{
+    node *p = head;
+    node *q = p->next;
+    while(q!=nullptr)
+    {
+        if(p->data != q->data)
+        {
+            p = q;
+            q = q->next;
+        }
+        else{
+            p->next = q->next;
+            delete q;
+            q = p->next;
+        }
+    }
+}
 
 int main()
 {
@@ -92,13 +110,17 @@ int main()
     node *one = new node(2);
     node *two = new node(4);
     node *three = new node(6);
+    node *four = new node(6);
+    node *five = new node(8);
 
     // Connect the nodes
     one->next = two;
     two->next = three;
+    three->next = four;
+    four->next = five;
 
     head = one;
-    cout<<isSorted(head)<<endl;
+    removeDuplicates(head);
     Display(head);
     return 0;
 };
