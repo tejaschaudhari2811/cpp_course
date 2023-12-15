@@ -51,6 +51,40 @@ int Queue::dequeue()
     }
 }
 
+bool Queue::isEmpty()
+{
+    return front == rear;
+}
+
+bool Queue::isFull()
+{
+    return rear == size -1;
+}
+
+int Queue::first()
+{
+    if (front > -1 && front < size)
+    {
+        return Q[front];
+    }
+    else
+    {
+        // Handle the case when the condition is not satisfied
+        cout << "Invalid access to first element." << endl;
+        return -1; // You can choose an appropriate default value
+    }
+}
+
+int Queue::last()
+{
+    if(isEmpty())
+    {
+        return -1;
+    }
+    else
+        return Q[rear];
+}
+
 void Queue::Display()
 {
     for (int i = front + 1; i <= rear; i++)
@@ -64,7 +98,6 @@ int main()
 {
     Queue q(5);
     q.enqueue(2);
-    q.dequeue();
-    q.Display();
+    cout<<q.first();
     return 0;
 }
