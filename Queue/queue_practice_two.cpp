@@ -38,6 +38,19 @@ void Queue::enqueue(int element)
     return;
 }
 
+int Queue::dequeue()
+{
+    int x = -1;
+    if(front == rear)
+    {
+        cout<<"The Queue is Empty"<<endl;
+        return -1;
+    }
+    else{
+        return Q[++front];
+    }
+}
+
 void Queue::Display()
 {
     for (int i = front + 1; i <= rear; i++)
@@ -51,6 +64,7 @@ int main()
 {
     Queue q(5);
     q.enqueue(2);
+    q.dequeue();
     q.Display();
     return 0;
 }
