@@ -26,12 +26,24 @@ void display(node *head)
 
 void Rdisplay(node *head)
 {
-    node * temp = head;
-    if(temp != NULL)
+    node *temp = head;
+    if (temp != NULL)
     {
-        cout<< temp->data<<endl;
+        cout << temp->data << endl;
         Rdisplay(temp->next);
     }
+}
+
+int sum(node *head)
+{
+    int sum = 0;
+    node *temp = head;
+    while (temp != nullptr)
+    {
+        sum = sum + temp->data;
+        temp = temp->next;
+    }
+    return sum;
 }
 
 int main()
@@ -48,5 +60,6 @@ int main()
     three->next = four;
 
     Rdisplay(head);
+    cout<<sum(head)<<endl;
     return 0;
 }
