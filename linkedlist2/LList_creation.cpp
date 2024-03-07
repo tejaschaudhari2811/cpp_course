@@ -14,29 +14,39 @@ public:
     }
 };
 
-void display(node * head)
+void display(node *head)
+{
+    node *temp = head;
+    while (temp != nullptr)
+    {
+        cout << temp->data << endl;
+        temp = temp->next;
+    }
+}
+
+void Rdisplay(node *head)
 {
     node * temp = head;
-    while(temp != nullptr)
+    if(temp != NULL)
     {
-        cout<<temp->data<<endl;
-        temp = temp->next;
+        cout<< temp->data<<endl;
+        Rdisplay(temp->next);
     }
 }
 
 int main()
 {
-    node * head;
-    node * one = new node(1);
-    node * two = new node(2);
-    node * three = new node(3);
-    node * four = new node(4);
+    node *head;
+    node *one = new node(1);
+    node *two = new node(2);
+    node *three = new node(3);
+    node *four = new node(4);
 
     head = one;
     one->next = two;
     two->next = three;
     three->next = four;
 
-    display(head);
+    Rdisplay(head);
     return 0;
 }
