@@ -14,9 +14,29 @@ public:
     }
 };
 
+void display(node * head)
+{
+    node * temp = head;
+    while(temp != nullptr)
+    {
+        cout<<temp->data<<endl;
+        temp = temp->next;
+    }
+}
+
 int main()
 {
-    node* p = new node(2);
-    cout << p->data <<" "<< p->next << endl;
+    node * head;
+    node * one = new node(1);
+    node * two = new node(2);
+    node * three = new node(3);
+    node * four = new node(4);
+
+    head = one;
+    one->next = two;
+    two->next = three;
+    three->next = four;
+
+    display(head);
     return 0;
 }
