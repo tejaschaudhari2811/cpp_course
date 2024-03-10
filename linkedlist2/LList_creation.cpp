@@ -46,6 +46,30 @@ int sum(node *head)
     return sum;
 }
 
+int count(node *head)
+{
+    int count = 0;
+    node *temp = head;
+    while (temp != nullptr)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+int Rcount(node *head)
+{
+    node *temp = head;
+    if (temp == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        return Rcount(temp->next) + 1;
+    }
+}
 int main()
 {
     node *head;
@@ -58,8 +82,7 @@ int main()
     one->next = two;
     two->next = three;
     three->next = four;
-
-    Rdisplay(head);
-    cout<<sum(head)<<endl;
+    node *false_head = nullptr;
+    cout << Rcount(head) << endl;
     return 0;
 }
