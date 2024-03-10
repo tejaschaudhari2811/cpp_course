@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 using namespace std;
 
 class node
@@ -70,6 +71,85 @@ int Rcount(node *head)
         return Rcount(temp->next) + 1;
     }
 }
+
+int max(node *head)
+{
+    int max = INT_MIN;
+    node *temp = head;
+    while (temp != nullptr)
+    {
+        if (temp->data > max)
+        {
+            max = temp->data;
+        }
+        temp = temp->next;
+    }
+    return max;
+}
+
+int Rmax(node *head)
+{
+    int x = INT_MIN;
+    if (head == nullptr)
+    {
+        return INT_MIN;
+    }
+    else
+    {
+        x = Rmax(head->next);
+        if (x > head->data)
+        {
+            return x;
+        }
+        else
+        {
+            return head->data;
+        }
+    }
+}
+
+int min(node *head)
+{
+    int min = INT_MAX;
+    node *temp = head;
+    while (temp != nullptr)
+    {
+        if (temp->data < min)
+        {
+            min = temp->data;
+        }
+        temp = temp->next;
+    }
+    return min;
+}
+
+node *linearSearch(node *head, int key)
+{
+    node *temp = head;
+    while (temp != nullptr)
+    {
+        if (temp->data == key)
+        {
+            return (temp);
+        }
+        temp = temp->next;
+    }
+    return nullptr;
+}
+
+node *RLinearSearch(node *head, int key)
+{
+    if (head == nullptr)
+    {
+        return nullptr;
+    }
+    if (key == head->data)
+    {
+        return (head);
+    }
+    return RLinearSearch(head->next, key);
+}
+
 int main()
 {
     node *head;
@@ -84,5 +164,6 @@ int main()
     three->next = four;
     node *false_head = nullptr;
     cout << Rcount(head) << endl;
+    cout << RLinearSearch(head, 3)->data << endl;
     return 0;
 }
